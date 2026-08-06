@@ -23,5 +23,7 @@ The rate at which memory decays at any exact moment is the first derivative of r
 
 $$\frac{dR}{dt} = -\frac{1}{S} \cdot e^{-\frac{t}{S}}$$
 
-**Where:** $\frac{dR}{dt}$ : The instantaneous rate of memory loss (how fast you are actively forgetting right now).
+**Where:** 
+$\frac{dR}{dt}$ : The instantaneous rate of memory loss (how fast you are actively forgetting right now).
+
 Notice that as stability $S$ increases, the decay rate drops closer to zero, meaning memory loss slows down significantly.
