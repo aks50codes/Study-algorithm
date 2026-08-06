@@ -46,14 +46,29 @@ class MemoryNode:
             growth = 1.0 + (alpha * latency_factor)
             self.stability = self.stability * growth
         else:
-            # Cut stability in half if they missed it
+            # Cut stability in half if they missed it, model uses half-life formula
             self.stability = max(0.1, self.stability * 0.5)
 
        
         self.last_reviewed_timestamp = time.time()
+class CognitiveDecayEngine:
+  def __init__(self):
+    self.memory_nodes = {}
+
+  def register_topic(self, topic_name, initial_stability = 1.0):
+    if topic_name not in self.memory_nodes:
+      self.memory_nodes[topic_name] = MemoryNode(topic_name, initial_stability)
+    return self.memory_nodes[topic_name]
+
+  def get_decay_rankings(self, simulated_days_passed = 0.0):
+    TRS = [] #Topic retention scores
+    for topic_name, node in memory_nodes.items():
+      retention_score = node.calculate_retention(simulated_days_passed)
+      TRS.append((topic_name, retention_score))
+    TRS.sort(key=lambda x: x[1]) # lambda is an inline function that helps sort based on a specific key of the tuple
+    return TRS
 if __name__ == "__main__":
     node = MemoryNode("Atomic Structure", initial_stability=1.0)
-    
     print(f"Topic: {node.topic_name}")
     print(f"Initial Stability: {node.stability} days")
     print(f"Initial Retention: {node.calculate_retention() * 100:.1f}%")
