@@ -52,6 +52,7 @@ class SyllabusEngine:
                     
         return total_weight
 
+    def has_cycled(self, 
 
 # This runs only when you execute this file directly
 if __name__ == "__main__":
