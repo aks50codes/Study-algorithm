@@ -8,9 +8,9 @@ repetition software, an ASRE treats knowledge retention as a continuous state sy
 
 1. Retention R(t) for any given topic is modeled as an exponential decay curve governed by the differential equation of memory stability S: 
 
-                             $$
-                  R(t) = e^{-\frac{t}{S}}
-                             $$
+$$
+R(t) = e^{-\frac{t}{S}}
+$$
 
 **Where:**
 * $t$: Elapsed time in days since last review.
