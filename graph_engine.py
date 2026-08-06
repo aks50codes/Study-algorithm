@@ -30,7 +30,7 @@ class SyllabusEngine:
         for index, existing_child in enumerate(self.adjacency_list[parent_topic]):
             # Check if the topic name matches
             if existing_child[0] == child_topic:
-                print(f"🔄 Updating weight for connection from {parent_topic} to {child_topic} to {weight}")
+                print(f" Updating weight for connection from {parent_topic} to {child_topic} to {weight}")
                 # Overwrite the old tuple at this exact index position
                 self.adjacency_list[parent_topic][index] = (child_topic, weight)
                 return True
@@ -59,24 +59,24 @@ if __name__ == "__main__":
     # create an instance engine of this class
     engine = SyllabusEngine()
     
-    print("--- Building a Chemistry Syllabus ---")
+    print("Building a Chemistry Syllabus")
     # Add some topics and prerequisite samples
     engine.add_prerequisite("Atomic Structure", "Chemical Bonding", 1.0)
     engine.add_prerequisite("Chemical Bonding", "Thermodynamics", 0.6)
     
-    print("\n--- Testing Irreflexivity Guardrail ---")
+    print("\nTesting Irreflexivity Guardrail")
     # Try to break irreflexivity rule by linking a topic to itself
     engine.add_prerequisite("Organic Chemistry", "Organic Chemistry")
 
-    print("\n--- Testing Dynamic Weight Updating ---")
+    print("\nTesting Dynamic Weight Updating")
     # Update an existing prerequisite edge with a new weight coefficient
     engine.add_prerequisite("Chemical Bonding", "Thermodynamics", 0.95)
     
-    print("\n--- Current Graph Structure (Adjacency List) ---")
+    print("\nCurrent Graph Structure (Adjacency List)")
     # Print out raw dictionary to test structural accuracy
     print(engine.adjacency_list)
 
-    print("\n--- Testing Dependency Metrics ---")
+    print("\nTesting Dependency Metrics")
     # Calculate inbound weight landing on Thermodynamics
     thermo_weight = engine.get_dependency_weight("Thermodynamics")
     print(f"Total prerequisite dependency weight for 'Thermodynamics': {thermo_weight}")
